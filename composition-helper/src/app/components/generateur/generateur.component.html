@@ -1,0 +1,24 @@
+<h2>Générateur de contraintes musicales</h2>
+
+<div>
+  <h3>Types de contraintes :</h3>
+  <div *ngFor="let filtre of filtres">
+    <label>
+      <input type="checkbox" [(ngModel)]="filtre.active" />
+      {{ filtre.type }}
+    </label>
+  </div>
+</div>
+
+<button (click)="generer()">Générer une contrainte</button>
+
+<hr>
+
+<div *ngIf="contraintesTirees.length > 0">
+  <h3>Contraintes générées :</h3>
+  <ul>
+    <li *ngFor="let c of contraintesTirees">
+      <strong>{{ c.type }}</strong> — {{ c.libelle }}
+    </li>
+  </ul>
+</div>
