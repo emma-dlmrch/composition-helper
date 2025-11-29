@@ -1,5 +1,42 @@
 Type;Contrainte
-Rythme;Mesures Impaires
+Rythme; Mesures Impaires
+Rythme; 5/4
+Rythme; 7/4
 Rythme; 3/4
-Harmonie;Dorien
-Harmonie; Myxolydien
+Rythme; 4/4
+Rythme; 6/8
+Gamme; Dorien
+Gamme; Myxolydien
+Gamme; Majeur
+Gamme; Mineur
+Gamme; Lydien
+Gamme; Locrien
+Style; Valse
+Style; Classic jazz
+Style; Samba
+Style; Salsa
+Style; Musique de l'est
+Style; Latin
+Style; Jeux vidéo
+Style; Film
+Style; Orchestral
+Style; Berceuse
+Style; Tango
+Procédés; Polyrythmie
+Procédés; Basse constante
+Procédés; Changement de signature rythmique
+Procédés; Passage Majeur/Mineur
+Procédés; Modulation Improbable
+Procédés; Référence à thème célèbre
+Humeur; Joie
+Humeur; Triste
+Humeur; Peur
+Humeur; Festif
+Humeur; Sentimental
+Référence; Jingle
+Référence; Air classique
+Référence; Air de film
+Référence; Air de jeux vidéo
+Référence; Air de jazz
+Référence; Objet de quotidien
+

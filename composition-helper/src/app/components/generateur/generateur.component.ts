@@ -31,7 +31,7 @@ export class GenerateurComponent implements OnInit {
   async ngOnInit() {
     this.contraintes = await this.contrainteService.chargerContraintes();
     this.typesDisponibles = [...new Set(this.contraintes.map(c => c.type))];
-    this.filtres = this.typesDisponibles.map(t => ({ type: t, active: true }));
+    this.filtres = this.typesDisponibles.map(t => ({ type: t, active: false }));
   }
 
 generer() {
