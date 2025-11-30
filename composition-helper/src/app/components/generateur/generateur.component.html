@@ -2,11 +2,13 @@
 
 <div>
   <!-- <h3>Types de contraintes :</h3> -->
-    <button
-    *ngFor="let filtre of filtres"
-    (click)="filtre.active = !filtre.active"
+  <button *ngFor="let filtre of filtres" (click)="filtre.active = !filtre.active"
     [ngClass]="filtre.active ? 'type-btn active' : 'type-btn inactive'">
     {{ filtre.type }}
+  </button>
+  <button (click)="estSuiteNotesActif = !estSuiteNotesActif"
+    [ngClass]="estSuiteNotesActif ? 'type-btn active' : 'type-btn inactive'">
+    Suite de notes
   </button>
 </div>
 
@@ -16,10 +18,14 @@
 
 
 <div *ngIf="contraintesTirees.length > 0">
-  <h3>Contraintes :</h3>
+  <h3>Résultat :</h3>
   <div class="result-tags">
-    <div *ngFor="let c of contraintesTirees" class="result-tag">
+    <div *ngFor="let c of contraintesTirees;  index as i" class="result-tag" (click)="regenererUnitaire(i)">
       <strong>{{ c.type }}</strong> — {{ c.libelle }}
+      <!-- <span aria-hidden="true" (click) = "regenererUnitaire(i)" >↻</span> -->
     </div>
   </div>
 </div>
+
+
+<app-melodie *ngIf = "estSuiteNotesAGenerer"></app-melodie>

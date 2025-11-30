@@ -1,0 +1,16 @@
+<div class="notes-container">
+    <div class="note">
+        <strong>Suite de notes</strong>
+    </div>
+    <div *ngFor="let note of notes; index as i" class="note note-playable"  (click)="play(note)">
+        <span> {{ note }}</span>
+    </div>
+
+    <div class="bullet">
+    <button (click)="generer()" class="generate-btn">
+        ↻
+    </button>
+    </div>
+
+    <div ><input type="number" [(ngModel)]="nbNotes" min="1"></div>
+</div>
