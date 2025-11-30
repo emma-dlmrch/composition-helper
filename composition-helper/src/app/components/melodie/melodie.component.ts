@@ -19,7 +19,9 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 export class MelodieComponent implements OnInit {
 
   nbNotes: number = 3;
-  notes : string [] = [];
+  notes: string[] = [];
+  //lock modification ou lecture
+  modeLecture: boolean = true;
 
   constructor(private noteService: NoteService, private audioService: AudioService) { }
 
@@ -33,16 +35,32 @@ export class MelodieComponent implements OnInit {
     this.notes = this.noteService.getNotesAleatoires(this.nbNotes);
   }
 
-  play(note:string){
+  play(note: string) {
     const noteOctave = note + "4";
     this.audioService.playNote(noteOctave)
   }
 
-  async playSuite(){
+  playIndex(noteIndex: number) {
+    this.play(this.notes[noteIndex]);
+  }
+
+  async playSuite() {
     for (const note of this.notes) {
       this.play(note);
-      await sleep(750);  
+      await sleep(750);
     }
+  }
+
+  clickNote(noteIndex: number) {
+    if (this.modeLecture) {
+      this.playIndex(noteIndex);
+    } else {
+      this.remplacerNote(noteIndex);
+    }
+  }
+
+  remplacerNote(noteIndex: number) {
+    this.notes[noteIndex] = this.noteService.getNoteAleatoire();
   }
 
 }

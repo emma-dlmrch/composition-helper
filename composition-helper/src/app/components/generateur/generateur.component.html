@@ -1,7 +1,6 @@
-<h2>Contraintes musicales</h2>
+<h1>Contraintes Musicales</h1>
 
 <div>
-  <!-- <h3>Types de contraintes :</h3> -->
   <button *ngFor="let filtre of filtres" (click)="filtre.active = !filtre.active"
     [ngClass]="filtre.active ? 'type-btn active' : 'type-btn inactive'">
     {{ filtre.type }}

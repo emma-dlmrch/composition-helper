@@ -37,7 +37,6 @@ export class GenerateurComponent implements OnInit {
 
   showSettings = false;
 
-
   constructor(private contrainteService: ContrainteService) { }
 
   async ngOnInit() {

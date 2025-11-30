@@ -2,7 +2,7 @@
     <div class="note" (click)="playSuite()">
         <strong>Suite de notes</strong>
     </div>
-    <div *ngFor="let note of notes; index as i" class="note note-playable"  (click)="play(note)">
+    <div *ngFor="let note of notes; index as i" class="note note-playable"  (click)="clickNote(i)">
         <span> {{ note }}</span>
     </div>
 
@@ -13,4 +13,5 @@
     </div>
 
     <div ><input type="number" [(ngModel)]="nbNotes" min="1"></div>
+    <div><button (click) = "modeLecture = !modeLecture" class="note mode-toggle"> Mode : <span *ngIf="modeLecture">▶︎</span><span *ngIf="!modeLecture">✐</span> </button></div>
 </div>

@@ -1,18 +1,4 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-  background-color: #1e1e2f;
-  font-family: 'Arial', sans-serif;
-  color: #fff;
-  text-align: center;
-}
 
-h2, h3 {
-  font-weight: 600;
-}
 
 .type-btn {
   padding: 10px 20px;
@@ -56,7 +42,8 @@ h2, h3 {
 
 .toggle-header {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
   padding: 8px 16px;
@@ -66,6 +53,7 @@ h2, h3 {
     line-height: 1;      // important pour centrer le texte
     display: flex;
     align-items: center;  // centre le texte verticalement si nécessaire
+    justify-content: center;  // centre le texte verticalement si nécessaire
   }
 
   .chevron {

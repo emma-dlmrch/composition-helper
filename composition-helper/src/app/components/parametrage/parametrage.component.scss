@@ -11,8 +11,7 @@
 .type-btn {
   padding: 8px 16px;
   border-radius: 25px;      /* arrondi comme tes boutons précédents */
-  //border: 2px solid #fff;
-  border: 2px solid;
+  border: 2px solid #459a48;
   background-color: #4caf50; /* vert activé */
   color: white;
   font-weight: 600;
@@ -28,9 +27,7 @@
 .type-btn.off {
   background-color: #f0f0f0;  /* gris clair */
   color: #666;
-//   border: 2px solid #ccc;
-  border: 2px solid;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border: 2px solid #ccc;
 }
 
 /* Hover */
