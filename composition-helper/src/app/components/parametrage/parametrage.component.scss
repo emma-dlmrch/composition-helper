@@ -1,0 +1,45 @@
+/* Conteneur des boutons */
+.accord-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* Boutons type d'accord */
+.type-btn {
+  padding: 8px 16px;
+  border-radius: 25px;      /* arrondi comme tes boutons précédents */
+  //border: 2px solid #fff;
+  border: 2px solid;
+  background-color: #4caf50; /* vert activé */
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  user-select: none;
+}
+
+/* État désactivé */
+.type-btn.off {
+  background-color: #f0f0f0;  /* gris clair */
+  color: #666;
+//   border: 2px solid #ccc;
+  border: 2px solid;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Hover */
+.type-btn:not(.off):hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.type-btn.off:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}

@@ -10,6 +10,10 @@
     [ngClass]="estSuiteNotesActif ? 'type-btn active' : 'type-btn inactive'">
     Suite de notes
   </button>
+    <button (click)="estSuiteAccordsActif = !estSuiteAccordsActif"
+    [ngClass]="estSuiteAccordsActif ? 'type-btn active' : 'type-btn inactive'">
+    Suite d'accords
+  </button>
 </div>
 
 
@@ -18,7 +22,7 @@
 
 
 <div *ngIf="contraintesTirees.length > 0">
-  <h3>Résultat :</h3>
+  <!-- <h3>Résultat :</h3> -->
   <div class="result-tags">
     <div *ngFor="let c of contraintesTirees;  index as i" class="result-tag" (click)="regenererUnitaire(i)">
       <strong>{{ c.type }}</strong> — {{ c.libelle }}
@@ -29,3 +33,17 @@
 
 
 <app-melodie *ngIf = "estSuiteNotesAGenerer"></app-melodie>
+<app-suiteaccords *ngIf = "estSuiteAccordsAGenerer"></app-suiteaccords>
+
+
+
+<div class="toggle-header" (click)="showSettings = !showSettings">
+  <h2>⚙️ Paramétrage
+  <span class="chevron" [class.open]="showSettings">▼</span>
+  </h2>
+
+</div>
+
+<div class="settings-panel" [class.open]="showSettings">
+  <app-parametrage></app-parametrage>
+</div>

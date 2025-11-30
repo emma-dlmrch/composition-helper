@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 
 
-@Injectable({ providedIn: 'root' })
-export class NoteGeneratorService {
+export const NOTES = [
+  "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"
+];
 
-  private notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+@Injectable({ providedIn: 'root' })
+export class NoteService {
 
   //pour l'instant on va pas se préocupper des octaves
   getNoteAleatoire(): string {
-    const index = Math.floor(Math.random() * this.notes.length);
-    return this.notes[index];
+    const index = Math.floor(Math.random() * NOTES.length);
+    return NOTES[index];
   }
 
   getNotesAleatoires(nombre:number): string[] {

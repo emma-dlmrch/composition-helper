@@ -1,0 +1,17 @@
+<div class="notes-container">
+    <!-- <div class="note" (click)="playSuite()"> -->
+    <div class="note">
+        <strong>Suite d'accords</strong>
+    </div>
+    <div *ngFor="let accord of accords; index as i" class="note note-playable"  (click)="play(accord)">
+        <span> {{ accord.nom }}</span>
+    </div>
+
+    <div class="bullet">
+    <button (click)="generer()" class="generate-btn">
+        ↻
+    </button>
+    </div>
+
+    <div ><input type="number" [(ngModel)]="nbAccords" min="1"></div>
+</div>

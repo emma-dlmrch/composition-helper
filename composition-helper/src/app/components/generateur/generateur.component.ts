@@ -5,6 +5,8 @@ import { ContrainteService } from '../../services/contrainte.service';
 import { Contrainte } from '../../models/contrainte.model';
 import { FormsModule } from '@angular/forms';
 import { MelodieComponent } from '../melodie/melodie.component';
+import { SuiteaccordsComponent } from '../suiteaccords/suiteaccords.component';
+import { ParametrageComponent } from '../parametrage/parametrage.component';
 
 
 interface Filtre {
@@ -15,7 +17,7 @@ interface Filtre {
 @Component({
   selector: 'app-generateur',
   standalone: true,
-  imports: [CommonModule, FormsModule, MelodieComponent],
+  imports: [CommonModule, FormsModule, MelodieComponent, SuiteaccordsComponent, ParametrageComponent],
   templateUrl: './generateur.component.html',
   styleUrls: ['./generateur.component.scss']
 })
@@ -26,8 +28,15 @@ export class GenerateurComponent implements OnInit {
   typesDisponibles: string[] = [];
   contraintesTirees: Contrainte[] = [];
   filtres: Filtre[] = [];
+  //suite de notes
   estSuiteNotesActif: boolean = false;
   estSuiteNotesAGenerer: boolean = false;
+  //suite d'accords
+  estSuiteAccordsActif: boolean = false;
+  estSuiteAccordsAGenerer: boolean = false;
+
+  showSettings = false;
+
 
   constructor(private contrainteService: ContrainteService) { }
 
@@ -46,6 +55,7 @@ export class GenerateurComponent implements OnInit {
     }).filter(c => c !== null) as Contrainte[];
 
     this.estSuiteNotesAGenerer = this.estSuiteNotesActif;
+    this.estSuiteAccordsAGenerer = this.estSuiteAccordsActif;
   }
 
   regenererUnitaire(numLigne: number) {

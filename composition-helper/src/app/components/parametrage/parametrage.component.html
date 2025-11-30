@@ -1,0 +1,10 @@
+<h3>Accords proposés</h3>
+<div class="accord-filters">
+
+ <button *ngFor="let type of types" class="type-btn"
+    [class.off]="!isActive(type)"
+    class="type-btn"
+    (click)="toggle(type)">
+    {{ type }}
+</button>
+</div>

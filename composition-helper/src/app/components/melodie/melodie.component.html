@@ -1,5 +1,5 @@
 <div class="notes-container">
-    <div class="note">
+    <div class="note" (click)="playSuite()">
         <strong>Suite de notes</strong>
     </div>
     <div *ngFor="let note of notes; index as i" class="note note-playable"  (click)="play(note)">
