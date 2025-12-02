@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccordConfigService } from '../../services/accordconfig.service';
-import { ACCORDS, AccordType } from '../../services/accord.service';
+import { AccordType } from '../../services/accord.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

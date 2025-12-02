@@ -4,7 +4,12 @@
  <button *ngFor="let type of types" class="type-btn"
     [class.off]="!isActive(type)"
     class="type-btn"
-    (click)="toggle(type)">
+    (click)="toggle(type); accordConfigService.save()">
     {{ type }}
 </button>
 </div>
+
+<h3>Nombre d'accords</h3>
+<div ><input type="number" [(ngModel)]="accordConfigService.nbAccords" min="1" max="10" (ngModelChange)="accordConfigService.save()" ></div>
+<h3>Nombre de notes</h3>
+<div ><input type="number" [(ngModel)]="accordConfigService.nbNotes" min="1" max ="20" (ngModelChange)="accordConfigService.save()"></div>

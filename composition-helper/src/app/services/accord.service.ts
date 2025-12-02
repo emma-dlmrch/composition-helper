@@ -11,6 +11,10 @@ export const ACCORDS = {
     majM7: [0, 4, 7, 11],  // majeur7
     min7: [0, 3, 7, 10],  // mineur7
     minM7: [0, 3, 7, 11],  // mineur maj 7
+    sus4: [0, 5, 7, 10],
+    maj6: [0, 4, 7, 9],
+    min6: [0, 3, 7, 9],
+    maj7: [0, 4, 7, 10]
 };
 
 export type AccordType = keyof typeof ACCORDS;
@@ -35,17 +39,23 @@ export class AccordService {
 
 
     getAccordAleatoire(typesAutorises: (keyof typeof ACCORDS)[]): Accord {
-        if (typesAutorises.length === 0) {
-            throw new Error("Aucun type d'accord n'est autorisé.");
-        }
+        const type = this.getTypeAleatoire(typesAutorises);
         const racine: string = this.noteService.getNoteAleatoire();
-        const type = typesAutorises[Math.floor(Math.random() * typesAutorises.length)];
+
         const accord: Accord = {
-            nom: racine + type,
-            notes: this.genererNotesAccord(racine, type, 4)
+            nom: type,
+            notes: this.genererNotesAccord(racine, type, 4),
+            racine: racine
         }
         return accord;
 
+    }
+
+    getTypeAleatoire(typesAutorises: (keyof typeof ACCORDS)[]) {
+        if (typesAutorises.length === 0) {
+            throw new Error("Aucun type d'accord n'est autorisé.");
+        }
+        return typesAutorises[Math.floor(Math.random() * typesAutorises.length)];
     }
 
     getAccordsAleatoires(nombre: number, typesAutorises: (keyof typeof ACCORDS)[]): Accord[] {

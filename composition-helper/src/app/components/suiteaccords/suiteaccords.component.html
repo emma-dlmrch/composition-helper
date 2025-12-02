@@ -3,15 +3,25 @@
     <div class="note">
         <strong>Suite d'accords</strong>
     </div>
-    <div *ngFor="let accord of accords; index as i" class="note note-playable"  (click)="play(accord)">
-        <span> {{ accord.nom }}</span>
+    <div *ngFor="let accord of accords; index as i" class="note note-playable" (click)="play(accord)"
+        (longPress)="modifierAccord(accord)">
+        <span> {{accord.racine}}{{ accord.nom }}</span>
     </div>
 
     <div class="bullet">
-    <button (click)="generer()" class="generate-btn">
-        ↻
-    </button>
+        <button (click)="generer()" class="generate-btn">
+            ↻
+        </button>
     </div>
-
-    <div ><input type="number" [(ngModel)]="nbAccords" min="1"></div>
 </div>
+
+
+    <div class="edit-menu" *ngIf="showEditMenu">
+        <div class="overlay" (click)="fermerMenu()"></div>
+
+        <div class="menu-box">
+            <button (click)="regenererRacine()">🔠 Régénérer la racine</button>
+            <button (click)="regenererType()">🎶 Régénérer le type</button>
+            <button (click)="regenererTout()">🔁 Régénérer l'accord complet</button>
+        </div>
+    </div>
