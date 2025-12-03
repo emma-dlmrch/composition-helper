@@ -10,8 +10,8 @@ button.generate-btn {
 //pop up modif accord
 
 .menu-box {
-  position: absolute; //fixed
-  // top: 50%;
+  position: fixed; //fixed
+  top: 50%;
   left: 50%;
   background: #fff;
   padding: 15px;
@@ -22,6 +22,7 @@ button.generate-btn {
   gap: 12px;
   transform: translate(-50%, -50%);
   z-index: 1000; /* au dessus de tout */
+  width: 70%;
 }
 
 .menu-box button {

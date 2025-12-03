@@ -1,5 +1,5 @@
 // src/app/components/generateur/generateur.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContrainteService } from '../../services/contrainte.service';
 import { Contrainte } from '../../models/contrainte.model';
@@ -35,7 +35,11 @@ export class GenerateurComponent implements OnInit {
   estSuiteAccordsActif: boolean = false;
   estSuiteAccordsAGenerer: boolean = false;
 
-  showSettings = false;
+  showSettings: boolean = false;
+  showResults: boolean = false;
+
+  //pour focus
+  @ViewChild('resultSection') resultSection!: ElementRef<HTMLElement>;
 
   constructor(private contrainteService: ContrainteService) { }
 
@@ -55,6 +59,20 @@ export class GenerateurComponent implements OnInit {
 
     this.estSuiteNotesAGenerer = this.estSuiteNotesActif;
     this.estSuiteAccordsAGenerer = this.estSuiteAccordsActif;
+
+    //FOCUS
+    this.showResults = true;
+    setTimeout(() => {
+      const el = this.resultSection.nativeElement;
+
+      // Focus
+      el.focus();
+
+      el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'  // le place en haut de la page
+      });
+    });
   }
 
   regenererUnitaire(numLigne: number) {

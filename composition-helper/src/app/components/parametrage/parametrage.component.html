@@ -1,4 +1,5 @@
-<h3>Accords proposés</h3>
+<h2>Paramètres</h2>
+<p>Types d'accords</p>
 <div class="accord-filters">
 
  <button *ngFor="let type of types" class="type-btn"
@@ -9,7 +10,7 @@
 </button>
 </div>
 
-<h3>Nombre d'accords</h3>
+<p>Nombre d'accords</p>
 <div ><input type="number" [(ngModel)]="accordConfigService.nbAccords" min="1" max="10" (ngModelChange)="accordConfigService.save()" ></div>
-<h3>Nombre de notes</h3>
+<p>Nombre de notes</p>
 <div ><input type="number" [(ngModel)]="accordConfigService.nbNotes" min="1" max ="20" (ngModelChange)="accordConfigService.save()"></div>

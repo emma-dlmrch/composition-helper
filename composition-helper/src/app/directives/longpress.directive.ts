@@ -14,7 +14,7 @@ export class LongPressDirective {
   @HostListener('mousedown', ['$event'])
   @HostListener('touchstart', ['$event'])
   onPressStart(event: Event) {
-    event.preventDefault();
+    // event.preventDefault();
 
     this.timeout = setTimeout(() => {
       this.longPress.emit();

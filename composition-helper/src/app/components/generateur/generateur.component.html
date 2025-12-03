@@ -1,48 +1,44 @@
 <h1>Contraintes Musicales</h1>
 
+<button *ngFor="let filtre of filtres" (click)="filtre.active = !filtre.active"
+  [ngClass]="filtre.active ? 'type-btn active' : 'type-btn inactive'">
+  {{ filtre.type }}
+</button>
+<button (click)="estSuiteNotesActif = !estSuiteNotesActif"
+  [ngClass]="estSuiteNotesActif ? 'type-btn active' : 'type-btn inactive'">
+  Suite de notes
+</button>
+<button (click)="estSuiteAccordsActif = !estSuiteAccordsActif"
+  [ngClass]="estSuiteAccordsActif ? 'type-btn active' : 'type-btn inactive'">
+  Suite d'accords
+</button>
+
+
 <div>
-  <button *ngFor="let filtre of filtres" (click)="filtre.active = !filtre.active"
-    [ngClass]="filtre.active ? 'type-btn active' : 'type-btn inactive'">
-    {{ filtre.type }}
-  </button>
-  <button (click)="estSuiteNotesActif = !estSuiteNotesActif"
-    [ngClass]="estSuiteNotesActif ? 'type-btn active' : 'type-btn inactive'">
-    Suite de notes
-  </button>
-    <button (click)="estSuiteAccordsActif = !estSuiteAccordsActif"
-    [ngClass]="estSuiteAccordsActif ? 'type-btn active' : 'type-btn inactive'">
-    Suite d'accords
-  </button>
+<button (click)="generer()" class="generate-btn">Générer</button>
 </div>
 
 
 
-<button (click)="generer()" class="generate-btn">Générer</button>
-
-
-<div *ngIf="contraintesTirees.length > 0">
-  <!-- <h3>Résultat :</h3> -->
-  <div class="result-tags">
+<div #resultSection tabindex="0">
+  <div class="result-tags"  *ngIf="showResults">
+  <!-- <div class="result-tags"  *ngIf="contraintesTirees.length > 0"> -->
     <div *ngFor="let c of contraintesTirees;  index as i" class="result-tag" (click)="regenererUnitaire(i)">
       <strong>{{ c.type }}</strong> — {{ c.libelle }}
-      <!-- <span aria-hidden="true" (click) = "regenererUnitaire(i)" >↻</span> -->
     </div>
   </div>
 </div>
 
 
-<app-melodie *ngIf = "estSuiteNotesAGenerer"></app-melodie>
-<app-suiteaccords *ngIf = "estSuiteAccordsAGenerer"></app-suiteaccords>
+<app-melodie *ngIf="estSuiteNotesAGenerer"></app-melodie>
+<app-suiteaccords *ngIf="estSuiteAccordsAGenerer"></app-suiteaccords>
 
 
-
-<div class="toggle-header" (click)="showSettings = !showSettings">
-  <h2>⚙️ Paramétrage
-  <span class="chevron" [class.open]="showSettings">▼</span>
-  </h2>
-
+<div class="toggle" (click)="showSettings = !showSettings">
+  ⚙️
 </div>
 
-<div class="settings-panel" [class.open]="showSettings">
+<div class="panel" [class.open]="showSettings">
+  <button class="close-btn" (click)="showSettings = false">✕</button>
   <app-parametrage></app-parametrage>
 </div>
