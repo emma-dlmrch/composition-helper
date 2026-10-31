@@ -1,0 +1,16 @@
+
+<router-outlet></router-outlet>
+
+<div class="toggle" (click)="showSettings = !showSettings">
+  ⚙️
+</div>
+
+<div class="panel" [class.open]="showSettings">
+  <button class="close-btn" (click)="showSettings = false">✕</button>
+  <app-parametrage></app-parametrage>
+</div>
+
+<div class="toggle-nav">
+    <div routerLink="/">💡</div>
+    <div routerLink="/exercice">✍🏻</div>
+</div>

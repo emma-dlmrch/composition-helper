@@ -14,12 +14,23 @@ export class NoteService {
     return NOTES[index];
   }
 
-  getNotesAleatoires(nombre:number): string[] {
+  getNotesAleatoires(nombre: number): string[] {
     const listeNotes: string[] = [];
-    for (let i = 0; i< nombre; i++) {
+    for (let i = 0; i < nombre; i++) {
       listeNotes.push(this.getNoteAleatoire());
     }
     return listeNotes;
+  }
+
+
+  getNoteIntervalle(note: string, intervalle: number): string {
+    const notesSize = NOTES.length;
+    let i = NOTES.indexOf(note);
+    let modulo = (i + intervalle) % notesSize;
+    if (modulo < 0){
+      modulo += notesSize
+    }
+    return NOTES[modulo]
   }
 
 }

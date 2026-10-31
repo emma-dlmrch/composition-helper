@@ -48,7 +48,6 @@ export class AccordService {
             racine: racine
         }
         return accord;
-
     }
 
     getTypeAleatoire(typesAutorises: (keyof typeof ACCORDS)[]) {
@@ -64,6 +63,22 @@ export class AccordService {
             listeAccords.push(this.getAccordAleatoire(typesAutorises));
         }
         return listeAccords;
+    }
+
+    getAccordAvecIntervalle(accordPrec : Accord, intervalle : number, typesAutorises: (keyof typeof ACCORDS)[], changerType : boolean) {
+        let type:keyof typeof ACCORDS = accordPrec.nom as keyof typeof ACCORDS;
+        if (changerType) {
+            type = this.getTypeAleatoire(typesAutorises);
+        }
+
+        const racine: string = this.noteService.getNoteIntervalle(accordPrec.racine, intervalle);
+
+        const accord: Accord = {
+            nom: type,
+            notes: this.genererNotesAccord(racine, type, 4),
+            racine: racine
+        }
+        return accord;
     }
 
 }

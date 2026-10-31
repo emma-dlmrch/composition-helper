@@ -1,4 +1,7 @@
 <h2>Paramètres</h2>
+<div class="param-content">
+
+
 <p>Types d'accords</p>
 <div class="accord-filters">
 
@@ -14,3 +17,11 @@
 <div ><input type="number" [(ngModel)]="accordConfigService.nbAccords" min="1" max="10" (ngModelChange)="accordConfigService.save()" ></div>
 <p>Nombre de notes</p>
 <div ><input type="number" [(ngModel)]="accordConfigService.nbNotes" min="1" max ="20" (ngModelChange)="accordConfigService.save()"></div>
+<p>Temps (s)</p>
+<div ><input type="number" [(ngModel)]="accordConfigService.temps" min="1" max ="30" (ngModelChange)="accordConfigService.save()"></div>
+<p>Intervalle (1/2 ton)</p>
+<div ><input type="number" [(ngModel)]="accordConfigService.intervalle" min="-12" max ="12" (ngModelChange)="accordConfigService.save()"></div>
+<p>Aleatoire</p>
+<div ><input type="checkbox" [(ngModel)]="accordConfigService.aleatoire" (ngModelChange)="accordConfigService.save()"></div>
+
+</div>
