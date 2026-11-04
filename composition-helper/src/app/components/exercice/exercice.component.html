@@ -4,6 +4,14 @@
 <button [ngClass]="isPlaying ? 'generate-btn' : 'type-btn'" (click) ="onPause()">⏸</button>
 <button (click) ="getNewChord()" class="type-btn">Suivant</button>
 
-<div class="chord" *ngIf="accord">
+<div class="chord" *ngIf="accord" (click) ="getNewChord()">
     <b>{{accord.racine}}</b><i>{{accord.nom}}</i>
+</div>
+
+<div class="timer-bar">
+  <div
+    class="timer-progress"
+    [style.width.%]="getTimeProgressBar()"
+    [class.no-transition]="getTimeProgressBar() === 100"
+  ></div>
 </div>

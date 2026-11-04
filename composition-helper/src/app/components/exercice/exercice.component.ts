@@ -14,12 +14,13 @@ import { NgClass, NgIf } from '@angular/common';
 })
 export class ExerciceComponent implements OnInit{
 
-  constructor(private accordService : AccordService, private accordConfigService : AccordConfigService) { }
+  constructor(private accordService : AccordService, public accordConfigService : AccordConfigService) { }
 
   isPlaying:boolean =false;
   time:number = 0;
   accord : Accord | undefined ;
   interval: ReturnType<typeof setInterval> | undefined;
+  step = 0.5;
 
   ngOnInit(): void {
     this.accord = this.accordService.getAccordAleatoire(this.accordConfigService.getTypesAutorises());
@@ -31,12 +32,12 @@ export class ExerciceComponent implements OnInit{
     } else if (this.accord) {
       this.accord = this.accordService.getAccordAvecIntervalle(this.accord, this.accordConfigService.intervalle, this.accordConfigService.getTypesAutorises(), true);
     }
+    this.onPause();
+    this.reinitTimer();
   }
 
   onPlay(){
     if (!this.isPlaying) {
-      this.time = 0;
-      this.isPlaying = true;
       this.startTimer();
     }
   }
@@ -48,12 +49,22 @@ export class ExerciceComponent implements OnInit{
 
   startTimer() {
     this.interval = setInterval(() => {
-      if (this.time >= this.accordConfigService.temps - 1) {
+      if (this.time + this.step >= this.accordConfigService.temps) {
         this.time =0;
         this.getNewChord()
       } else {
-        this.time++;
+        this.time += this.step;
       }
-    }, 1000)
+    }, this.step*1000)
+  }
+
+  reinitTimer(){
+    this.time = 0;
+    this.isPlaying = true;
+    this.startTimer();
+  }
+
+  getTimeProgressBar(){
+    return ((this.accordConfigService.temps - this.step - this.time) / (this.accordConfigService.temps -this.step)) * 100
   }
 }
