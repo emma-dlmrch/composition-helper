@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Accord } from '../../models/accord.model';
 import { AccordService } from '../../services/accord.service';
 import { AccordConfigService } from '../../services/accordconfig.service';
-import { NgClass, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-exercice',
   standalone: true,
-  imports: [NgIf, NgClass],
+  imports: [NgIf],
   templateUrl: './exercice.component.html',
   styleUrl: './exercice.component.scss'
 })
@@ -32,8 +32,10 @@ export class ExerciceComponent implements OnInit{
     } else if (this.accord) {
       this.accord = this.accordService.getAccordAvecIntervalle(this.accord, this.accordConfigService.intervalle, this.accordConfigService.getTypesAutorises(), true);
     }
-    this.onPause();
-    this.reinitTimer();
+    if (this.isPlaying) {
+      this.onPause();
+      this.reinitTimer();
+    }
   }
 
   onPlay(){
@@ -48,6 +50,7 @@ export class ExerciceComponent implements OnInit{
   }
 
   startTimer() {
+    this.isPlaying = true;
     this.interval = setInterval(() => {
       if (this.time + this.step >= this.accordConfigService.temps) {
         this.time =0;
@@ -60,7 +63,6 @@ export class ExerciceComponent implements OnInit{
 
   reinitTimer(){
     this.time = 0;
-    this.isPlaying = true;
     this.startTimer();
   }
 

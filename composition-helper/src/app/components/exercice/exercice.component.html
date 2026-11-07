@@ -1,7 +1,7 @@
 <h1>Exercices</h1>
 
-<button [ngClass]="!isPlaying ? 'generate-btn' : 'type-btn'" (click) ="onPlay()">▷</button>
-<button [ngClass]="isPlaying ? 'generate-btn' : 'type-btn'" (click) ="onPause()">⏸</button>
+<button *ngIf="!isPlaying" class="generate-btn" (click) ="onPlay()">▷</button>
+<button *ngIf="isPlaying" class="generate-btn" (click) ="onPause()">⏸</button>
 <button (click) ="getNewChord()" class="type-btn">Suivant</button>
 
 <div class="chord" *ngIf="accord" (click) ="getNewChord()">
